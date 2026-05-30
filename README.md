@@ -41,6 +41,19 @@ Main outputs:
 - `outputs/top_assets_by_state.csv`
 - `outputs/summary.md`
 
+## Sample Website
+
+The repository also includes a static sample results website:
+
+- `index.html`
+- `styles.css`
+- `app.js`
+- `site-data.js`
+
+It is designed to deploy directly on Vercel as a simple static site. The sample
+data file is generated from the current backtest outputs and can be refreshed
+after each new model run.
+
 The first version reproduces the core research loop:
 
 - classify ABCF business-cycle phase
