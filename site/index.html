@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Business Cycle Framework</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark">BC</span>
+      <div>
+        <strong>Business Cycle Framework</strong>
+        <small>Index-level backtest</small>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Dashboard sections">
+      <button class="active" data-tab="overview">Overview</button>
+      <button data-tab="playbook">Current Playbook</button>
+      <button data-tab="asset-classes">Asset Classes</button>
+      <button data-tab="rankings">Rankings</button>
+    </nav>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Sample results website</p>
+        <h1>Cycle-aware asset class dashboard</h1>
+      </div>
+      <div class="run-meta">
+        <span>Generated</span>
+        <strong id="generatedAt">--</strong>
+      </div>
+    </header>
+
+    <section id="overview" class="tab active">
+      <div class="signal-grid">
+        <article class="signal-card accent">
+          <span class="label">Business Cycle</span>
+          <strong id="cyclePhase">--</strong>
+          <div class="metric-row"><span>Date</span><b id="cycleDate">--</b></div>
+          <div class="metric-row"><span>RoRo</span><b id="cycleRoro">--</b></div>
+          <div class="metric-row"><span>Score</span><b id="cycleScore">--</b></div>
+          <div class="metric-row"><span>3M Delta</span><b id="cycleDelta">--</b></div>
+        </article>
+        <article class="signal-card">
+          <span class="label">Macro Regime</span>
+          <strong id="macroRegime">--</strong>
+          <div class="metric-row"><span>Date</span><b id="regimeDate">--</b></div>
+          <div class="metric-row"><span>Growth 3M</span><b id="growth3m">--</b></div>
+          <div class="metric-row"><span>Inflation 3M</span><b id="inflation3m">--</b></div>
+        </article>
+        <article class="signal-card compact">
+          <span class="label">Universe</span>
+          <strong id="assetCount">--</strong>
+          <div class="metric-row"><span>Months</span><b id="monthCount">--</b></div>
+          <div class="metric-row"><span>Classes</span><b id="classCount">--</b></div>
+          <div class="metric-row"><span>State types</span><b id="stateCount">--</b></div>
+        </article>
+      </div>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Current phase</p>
+            <h2 id="phaseTitle">Asset classes in current phase</h2>
+          </div>
+          <span class="pill">Sharpe sorted</span>
+        </div>
+        <div id="currentClassCards" class="class-cards"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Growth of $1</p>
+            <h2>Equal-weight asset class paths</h2>
+          </div>
+          <span class="pill">Monthly returns</span>
+        </div>
+        <div id="lineChart" class="line-chart" role="img" aria-label="Cumulative asset class return chart"></div>
+      </section>
+    </section>
+
+    <section id="playbook" class="tab">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Current business cycle phase</p>
+            <h2 id="playbookTitle">Best indexes now</h2>
+          </div>
+          <span class="pill">Top 8</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Asset</th><th>Class</th><th>Ann. Return</th><th>Vol</th><th>Sharpe</th><th>Hit Rate</th><th>Max DD</th></tr>
+            </thead>
+            <tbody id="currentIndexRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Current macro regime</p>
+            <h2 id="regimePlaybookTitle">Asset classes in current regime</h2>
+          </div>
+        </div>
+        <div id="currentRegimeCards" class="class-cards"></div>
+      </section>
+    </section>
+
+    <section id="asset-classes" class="tab">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Phase map</p>
+            <h2>Asset-class Sharpe by business cycle phase</h2>
+          </div>
+        </div>
+        <div id="phaseMatrix" class="matrix"></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Regime map</p>
+            <h2>Asset-class Sharpe by macro regime</h2>
+          </div>
+        </div>
+        <div id="regimeMatrix" class="matrix"></div>
+      </section>
+    </section>
+
+    <section id="rankings" class="tab">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Full playbook sample</p>
+            <h2>Top assets by state</h2>
+          </div>
+          <select id="stateFilter" aria-label="Filter by state"></select>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>State</th><th>Asset</th><th>Class</th><th>Ann. Return</th><th>Vol</th><th>Sharpe</th><th>Hit Rate</th><th>Max DD</th></tr>
+            </thead>
+            <tbody id="rankingRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="site-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
